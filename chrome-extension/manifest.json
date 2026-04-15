@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Moly Context Hub",
+  "description": "Automatically sense the active Chrome page and send readable context to the local Moly Context Hub app.",
+  "version": "0.2.0",
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:38451/*",
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Force capture the current page to Moly Context Hub"
+  }
+}
